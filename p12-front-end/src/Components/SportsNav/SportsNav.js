@@ -4,7 +4,7 @@ import yogaLogo from '../../assets/icons/yoga.svg'
 import swimmingLogo from '../../assets/icons/swimming.svg'
 import cyclingLogo from '../../assets/icons/cycling.svg'
 import fitnessLogo from '../../assets/icons/fitness.svg'
-import './Sports.css'
+import './SportsNav.css'
 
 export default function Sports() {
     return (

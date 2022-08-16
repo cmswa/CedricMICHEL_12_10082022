@@ -1,0 +1,14 @@
+.score {
+    height: 263px;
+    width: 258px;
+    border-radius: 5px;
+    background: #fbfbfb;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+    border-radius: 5px;
+}
+
+.score__title {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+}

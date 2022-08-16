@@ -1,0 +1,66 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.card {
+        /* height: 124px;
+    width: 258px; */
+    border-radius: 5px;
+    background: #fbfbfb;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+    border-radius: 5px;
+    /* margin: auto; */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 19%;
+}
+
+.card__calories__icon {
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    position: relative;
+    /* background: #ff0000; */
+    background: rgb(255, 0, 0, 0.07);
+    /* opacity: 0.07; */
+    mix-blend-mode: normal;
+    border-radius: 6px;
+    margin: 0 24px 0 32px;
+}
+
+.card__calories__icon-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    opacity: 1;
+}
+
+.card__calories__information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 60px;
+    justify-content: space-evenly;
+}
+
+.card__calories__information-data {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #282d30;
+}
+
+.card__calories__information-description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #74798c;
+}
