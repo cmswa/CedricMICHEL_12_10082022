@@ -8,6 +8,7 @@ import ActivityType from '../Components/ActivityType/ActivityType'
 import Score from '../Components/Score/Score'
 import Cards from '../Components/Cards/Cards'
 import './Profil.css'
+import data from '../mock/data.js'
 
 export default function Profil() {
     return (
@@ -15,7 +16,7 @@ export default function Profil() {
             < Header />
             < SportsNav />
             <main>
-                < Username />
+                < Username name={data.USER_MAIN_DATA[0].userInfos.firstName} />
                 <section className="charts">
 
                     <div className="charts__contains">
@@ -27,7 +28,7 @@ export default function Profil() {
                         </div>
                     </div>
 
-                    < Cards />
+                    < Cards keyData={data.USER_MAIN_DATA[0].keyData} />
 
                 </section>
             </main>
