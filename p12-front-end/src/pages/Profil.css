@@ -1,8 +1,9 @@
 main {
     /* margin-left: 115px; */
-    margin-left: 13%;
+    margin-left: 8%;
     padding: 5%;
-    width: 87%;
+    width: 92%;
+    padding-right: 7%;
 }
 
 .charts {
@@ -13,7 +14,21 @@ main {
     justify-content: space-between;
 }
 
-.charts__cards {
+.charts__contains {
+    /* width: 65%; */
+    width: 71%;
     display: flex;
-    width: 65%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.charts__contains__cards {
+    display: flex;
+    /* width: 65%; */
+    height: 40%;
+    justify-content: space-between;
+}
+
+.chartsCard {
+    width: 30.5%;
 }

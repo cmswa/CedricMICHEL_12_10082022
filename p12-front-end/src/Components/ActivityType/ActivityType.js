@@ -3,7 +3,7 @@ import './ActivityType.css'
 
 export default function ActivityType() {
     return (
-        <section className="activityType">
+        <section className="activityType chartsCard">
             <div className="radarChart">
 
             </div>

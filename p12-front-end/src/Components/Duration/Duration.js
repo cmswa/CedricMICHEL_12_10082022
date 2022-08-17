@@ -3,7 +3,7 @@ import './Duration.css'
 
 export default function Duration() {
     return (
-        <section className="duration">
+        <section className="duration chartsCard">
             <h4 className="duration__title">Durée moyenne des sessions</h4>
 
             <div className="lineChart">

@@ -17,13 +17,18 @@ export default function Profil() {
             <main>
                 < Username />
                 <section className="charts">
-                    < DailyActivity />
-                    < Cards />
-                    <div className="charts__cards">
-                        < Duration />
-                        < ActivityType />
-                        < Score />
+
+                    <div className="charts__contains">
+                        < DailyActivity />
+                        <div className="charts__contains__cards">
+                            < Duration />
+                            < ActivityType />
+                            < Score />
+                        </div>
                     </div>
+
+                    < Cards />
+
                 </section>
             </main>
         </>
