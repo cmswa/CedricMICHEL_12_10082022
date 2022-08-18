@@ -20,7 +20,7 @@ export default function Profil() {
                 <section className="charts">
 
                     <div className="charts__contains">
-                        < DailyActivity />
+                        < DailyActivity userActivity={data.USER_ACTIVITY[0].sessions}/>
                         <div className="charts__contains__cards">
                             < Duration />
                             < ActivityType />
