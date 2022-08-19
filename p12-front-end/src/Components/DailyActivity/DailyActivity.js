@@ -3,6 +3,25 @@ import './DailyActivity.css'
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function DailyActivity({ userActivity }) {
+
+    const renderXAxisNumber = (day) => {
+        const dayNumber = day.split('-')
+        return (Number(dayNumber[2])) //La méthode split() divise une chaîne de caractères en une liste ordonnée de sous-chaînes, place ces sous-chaînes dans un tableau et retourne le tableau.
+    }
+
+    //https://recharts.org/en-US/api/Tooltip
+    function CustomTooltip({ payload, active }) { //payload: The source data of the content to be displayed in the tooltip, usually calculated internally. active: If set true, the tooltip is displayed. If set false, the tooltip is hidden, usually calculated internally.
+        if (active) {
+            return (
+                <div className='dailyActivity__barChart--tooltip'>
+                    <div>{`${payload[0].value}`}kg</div>
+                    <div>{`${payload[1].value}`}Kcal</div>
+                </div>
+            )
+        }
+        return null
+    }
+
     return (
         <section className="dailyActivity">
             <header className="dailyActivity__header">
@@ -15,38 +34,55 @@ export default function DailyActivity({ userActivity }) {
                 </div>
             </header>
 
-            <ResponsiveContainer className="dailyActivity__barChart" width="100%" height="100%">
+            <ResponsiveContainer className="dailyActivity__barChart" width="100%" height="80%">
                 <BarChart
-                    width={500}
-                    height={300}
                     data={userActivity}
                     margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
+                        top: 30, right: 25, left: 25, bottom: 30
                     }}
                 >
-                    <CartesianGrid strokeDasharray="2 2" vertical={false}  height={1} horizontalPoints={[90, 185]} stroke='#DEDEDE'/>
-                    <XAxis dataKey="day"
-                    // interval='preserveStartEnd'
-                    tickSize='0' //enlève le tiret
+                    <CartesianGrid vertical='false' strokeDasharray='2 2' height={1} horizontalPoints={[30, 125]} />
+                    <XAxis className='dailyActivityXAxis'
+                        dataKey='day'
+                        tickFormatter={renderXAxisNumber} //The formatter function of tick(Set the values of axis ticks)
+                        interval='preserveStartEnd'
+                        tickSize='0' //enlève le "tiret" (The length of tick line.)
+                        tickMargin='25' //The margin between tick line and tick.
+                        stroke='#9B9EAC'
+                    // padding={{ left: -50, right: -50 }} 
                     />
-                    <YAxis orientation='right' dataKey="kilogram"/>
-                    <YAxis dataKey="calories"
-                        fill="#E60000"
-                        radius={[3, 3, 0, 0]}
-                        barSize={7} />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="kilogram"
+                    <YAxis
+                        dataKey='calories'
+                        yAxisId='right'
+                        // orientation='left'
+                        hide='true' />
+                    <YAxis className='dailyActivityYAxis'
+                        dataKey='kilogram'
+                        yAxisId='left'
+                        orientation='right'
+                        type='number'
+                        domain={['dataMin -1', 'dataMax']} //affiche -1kg du poids minimum de l'user, jusqu'au poids maximum (https://recharts.org/en-US/api/XAxis#domain)
+                        tickCount='3' //The count of axis ticks. 
+                        tickSize='0'
+                        axisLine={false} //If set false, no axis line will be drawn
+                        tickMargin='30'
+                        width={45}
+                        stroke='#9B9EAC' />
+                    {/* https://recharts.org/en-US/examples/CustomContentOfTooltip */}
+                    <Tooltip content={<CustomTooltip />} />
+                    <Bar
+                        dataKey='kilogram'
+                        yAxisId='left'
                         fill='#282D30'
                         radius={[3, 3, 0, 0]}
                         barSize={7} />
-                    {/* <Bar dataKey="calories"
-                        fill="#E60000"
+
+                    <Bar
+                        dataKey='calories'
+                        yAxisId='right'
+                        fill='#E60000'
                         radius={[3, 3, 0, 0]}
-                        barSize={7} /> */}
+                        barSize={7} />
                 </BarChart>
             </ResponsiveContainer>
 
