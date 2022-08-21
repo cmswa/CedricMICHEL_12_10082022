@@ -68,15 +68,14 @@ export default function DailyActivity({ userActivity }) {
                         tickMargin='30'
                         width={45}
                         stroke='#9B9EAC' />
-                    {/* https://recharts.org/en-US/examples/CustomContentOfTooltip */}
-                    <Tooltip content={<CustomTooltip />} />
+                    {/* https://recharts.org/en-US/examples/CustomContentOfTooltip - wrapperStyle Tooltip: border*/}
+                    <Tooltip wrapperStyle={{ outline: 'none' }} content={<CustomTooltip />} />
                     <Bar
                         dataKey='kilogram'
                         yAxisId='left'
                         fill='#282D30'
                         radius={[3, 3, 0, 0]}
                         barSize={7} />
-
                     <Bar
                         dataKey='calories'
                         yAxisId='right'
