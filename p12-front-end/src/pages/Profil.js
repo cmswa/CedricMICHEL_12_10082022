@@ -22,7 +22,7 @@ export default function Profil() {
                     <div className="charts__contains">
                         < DailyActivity userActivity={data.USER_ACTIVITY[0].sessions}/>
                         <div className="charts__contains__cards">
-                            < Duration />
+                            < Duration userAverageSession={data.USER_AVERAGE_SESSIONS[0].sessions}/>
                             < ActivityType />
                             < Score />
                         </div>
