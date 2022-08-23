@@ -20,10 +20,10 @@ export default function Profil() {
                 <section className="charts">
 
                     <div className="charts__contains">
-                        < DailyActivity userActivity={data.USER_ACTIVITY[0].sessions}/>
+                        < DailyActivity userActivity={data.USER_ACTIVITY[0].sessions} />
                         <div className="charts__contains__cards">
-                            < Duration userAverageSession={data.USER_AVERAGE_SESSIONS[0].sessions}/>
-                            < ActivityType />
+                            < Duration userAverageSession={data.USER_AVERAGE_SESSIONS[0].sessions} />
+                            < ActivityType userPerformance={data.USER_PERFORMANCE[0].data} />
                             < Score />
                         </div>
                     </div>
