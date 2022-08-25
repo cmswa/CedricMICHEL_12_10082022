@@ -17,9 +17,11 @@
 }
 
 .dailyActivity__header__title {
-    font-weight: 500;
+    /* font-weight: 500; */
+    font-weight: 600;
     font-size: 15px;
     line-height: 24px;
+    color: #20253a;
 }
 
 .dailyActivity__header__decription {
@@ -32,6 +34,7 @@ span.dailyActivity__header__decription-weight {
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
+    color: #74798c;
 }
 
 .dailyActivity__header__decription-weightIcon {
@@ -52,6 +55,7 @@ span.dailyActivity__header__decription-weight {
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
+    color: #74798c;
 }
 
 .dailyActivity__barChart--tooltip {
@@ -66,4 +70,3 @@ span.dailyActivity__header__decription-weight {
     line-height: 24px;
     text-align: center;
 }
-

@@ -14,10 +14,24 @@ export default function Score({ userScore }) {
     }
     formatScore(userScore)
 
+    function calculatePercent(data) {
+        const score = Number(data.score)
+
+        return Math.round(score * 100) //retourne la valeur d'un nombre arrondi à l'entier le plus proche.
+    }
+    const scorePercent = calculatePercent(userScore)
+
+    function renderLegend() {
+        return <p className="score__RadialBarChart__legend">
+            <span className="score__RadialBarChart__legend--percent"> {scorePercent}% </span>
+            <span className="score__RadialBarChart__legend--txt"><br />de votre<br />objectif </span>
+        </p>
+    }
+
 
     return (
         <section className="score chartsCard">
-            {/* <h4 className="score__title">Score</h4> */}
+            <h4 className="score__title">Score</h4>
 
             <ResponsiveContainer className='score__RadialBarChart' width="100%" height="100%">
                 <RadialBarChart
@@ -29,15 +43,15 @@ export default function Score({ userScore }) {
                     startAngle={80}
                     endAngle={440}
                 >
-                     
-                    <RadialBar 
-                      fill='#FF0000'
-                      cornerRadius={25}
-                      barSize={10} 
-                      dataKey='score' />
-                      <PolarAngleAxis type='number' domain={[0, 1]} tick={false} />
-                     <circle cx="50%" cy="50%" fill='white' r="30%" />
-                    {/* <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" /> */}
+
+                    <RadialBar
+                        fill='#FF0000'
+                        cornerRadius={25}
+                        barSize={10}
+                        dataKey='score' />
+                    <PolarAngleAxis type='number' domain={[0, 1]} tick={false} />
+                    <circle cx="50%" cy="50%" fill='white' r="30%" />
+                    <Legend content={renderLegend} verticalAlign='middle' align="center" />
                 </RadialBarChart>
             </ResponsiveContainer >
 
