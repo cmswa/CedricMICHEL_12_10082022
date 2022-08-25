@@ -24,7 +24,7 @@ export default function Profil() {
                         <div className="charts__contains__cards">
                             < Duration userAverageSession={data.USER_AVERAGE_SESSIONS[0].sessions} />
                             < ActivityType userPerformance={data.USER_PERFORMANCE[0].data} />
-                            < Score />
+                            < Score userScore={data.USER_MAIN_DATA[0]} />
                         </div>
                     </div>
 

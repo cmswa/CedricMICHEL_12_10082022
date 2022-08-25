@@ -16,7 +16,7 @@ export default function ActivityType({ userPerformance }) {
         }
     }
 
-    const userPerformanceReversed = (userPerformance).reverse()
+    const userPerformanceReversed = ([...userPerformance]).reverse()
 
     return (
         <section className="activityType chartsCard">
