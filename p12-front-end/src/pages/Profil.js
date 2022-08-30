@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../Components/Header/Header'
 import SportsNav from '../Components/SportsNav/SportsNav'
 import Username from '../Components/Username/Username'
@@ -9,10 +9,30 @@ import Score from '../Components/Score/Score'
 import Cards from '../Components/Cards/Cards'
 import './Profil.css'
 import data from '../mock/data.js'
+import { useParams } from "react-router-dom";
+
 
 export default function Profil() {
+
+    const [dataApi, setDataApi] = useState([]);
+
+    let { id } = useParams();
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('http://localhost:3000/user/12/average-sessions')
+            const data = await response.json();
+            setDataApi(data)
+            console.log('data', data);
+        }
+        fetchData();
+    }, [])
+    console.log(id);
+    console.log(dataApi);
+
     return (
         <>
+            {/* <div>{dataApi.USER_MAIN_DATA}</div> */}
             < Header />
             < SportsNav />
             <main>
