@@ -14,7 +14,10 @@ import { useParams } from "react-router-dom";
 
 export default function Profil() {
 
-    const [dataApi, setDataApi] = useState({});
+    const [dataApiMain, setDataApi] = useState({});
+    const [dataApiActivity, setdataApiActivity] = useState({});
+    const [dataApiUserAverageSessions, setDataApiUserAverageSessions] = useState({});
+    const [dataApiUserPerformance, setDataApiUserPerformance] = useState({});
 
     let { id } = useParams();
 
@@ -24,40 +27,67 @@ export default function Profil() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`http://localhost:3000/user/${id}/`)
+            const response = await fetch(`http://localhost:3000/user/${id}`)
             const data = await response.json();
             setDataApi(data)
         }
         fetchData();
     }, [])
-    console.log(id);
-    console.log(dataApi.data);
+    // console.log(id);
+    // console.log(dataApiMain.data);
 
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(`http://localhost:3000/user/${id}/activity`)
+            const data = await response.json();
+            setdataApiActivity(data)
+        }
+        fetchData();
+    }, [])
+    console.log(dataApiActivity.data);
 
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(`http://localhost:3000/user/${id}/average-sessions`)
+            const data = await response.json();
+            setDataApiUserAverageSessions(data);
+        }
+        fetchData();
+    }, [])
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(`http://localhost:3000/user/${id}/performance`)
+            const data = await response.json();
+            setDataApiUserPerformance(data);
+        }
+        fetchData();
+    }, [])
 
     return (
-        <div>
+        <>
             < Header />
             < SportsNav />
-            { dataApi && dataApi.data ?
-            <main>
-                < Username name={dataApi.data.userInfos.firstName} />
-                <section className="charts">
+            
+            {(dataApiMain.data || dataApiActivity.data || dataApiUserAverageSessions.data || dataApiUserPerformance.data) && //short circuit operator
+                <main>
+                    < Username name={dataApiMain.data.userInfos.firstName} />
+                    <section className="charts">
 
-                    <div className="charts__contains">
-                        < DailyActivity userActivity={data.USER_ACTIVITY[0].sessions} />
-                        <div className="charts__contains__cards">
-                            < Duration userAverageSession={data.USER_AVERAGE_SESSIONS[0].sessions} />
-                            < ActivityType userPerformance={data.USER_PERFORMANCE[0].data} />
-                            < Score userScore={data.USER_MAIN_DATA[0]} />
+                        <div className="charts__contains">
+                            < DailyActivity userActivity={dataApiActivity.data.sessions} />
+                            <div className="charts__contains__cards">
+                                < Duration userAverageSession={dataApiUserAverageSessions.data.sessions} />
+                                < ActivityType userPerformance={dataApiUserPerformance.data.data} />
+                                < Score userScore={dataApiMain.data} />
+                            </div>
                         </div>
-                    </div>
 
-                    < Cards keyData={dataApi.data.keyData} />
+                        < Cards keyData={dataApiMain.data.keyData} />
 
-                </section>
-            </main>
-:'loading'}
-        </div>
+                    </section>
+                </main>
+            }
+        </>
     )
 }

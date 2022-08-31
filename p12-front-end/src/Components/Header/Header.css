@@ -24,6 +24,7 @@
 
 .nav-top__links a {
     color: #ffffff;
+    pointer-events: none;
 }
 
 .nav-top__logo {
