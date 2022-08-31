@@ -14,29 +14,34 @@ import { useParams } from "react-router-dom";
 
 export default function Profil() {
 
-    const [dataApi, setDataApi] = useState([]);
+    const [dataApi, setDataApi] = useState({});
 
     let { id } = useParams();
 
+    // const currentUserInfo = dataApi.find(user => user.id === parseInt(id))
+    // const [dataUser, setDataUser] = useState()
+    // console.log(currentUserInfo);
+
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('http://localhost:3000/user/12/average-sessions')
+            const response = await fetch(`http://localhost:3000/user/${id}/`)
             const data = await response.json();
             setDataApi(data)
-            console.log('data', data);
         }
         fetchData();
     }, [])
     console.log(id);
-    console.log(dataApi);
+    console.log(dataApi.data);
+
+
 
     return (
-        <>
-            {/* <div>{dataApi.USER_MAIN_DATA}</div> */}
+        <div>
             < Header />
             < SportsNav />
+            { dataApi && dataApi.data ?
             <main>
-                < Username name={data.USER_MAIN_DATA[0].userInfos.firstName} />
+                < Username name={dataApi.data.userInfos.firstName} />
                 <section className="charts">
 
                     <div className="charts__contains">
@@ -48,10 +53,11 @@ export default function Profil() {
                         </div>
                     </div>
 
-                    < Cards keyData={data.USER_MAIN_DATA[0].keyData} />
+                    < Cards keyData={dataApi.data.keyData} />
 
                 </section>
             </main>
-        </>
+:'loading'}
+        </div>
     )
 }
