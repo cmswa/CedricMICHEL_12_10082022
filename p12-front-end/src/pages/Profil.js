@@ -14,8 +14,8 @@ import { useParams } from "react-router-dom";
 
 export default function Profil() {
 
-    const [dataApiMain, setDataApi] = useState({});
-    const [dataApiActivity, setdataApiActivity] = useState({});
+    const [dataApiUserMain, setDataApiUserMain] = useState({});
+    const [dataApiUserActivity, setdataApiUserActivity] = useState({});
     const [dataApiUserAverageSessions, setDataApiUserAverageSessions] = useState({});
     const [dataApiUserPerformance, setDataApiUserPerformance] = useState({});
 
@@ -25,21 +25,20 @@ export default function Profil() {
         async function fetchData() {
             const response = await fetch(`http://localhost:3000/user/${id}`)
             const data = await response.json();
-            setDataApi(data)
+            setDataApiUserMain(data)
         }
         fetchData();
     }, [id])
-
 
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(`http://localhost:3000/user/${id}/activity`)
             const data = await response.json();
-            setdataApiActivity(data)
+            setdataApiUserActivity(data)
         }
         fetchData();
     }, [id])
-    console.log(dataApiActivity.data);
+    // console.log(dataApiUserActivity.data);
 
     useEffect(() => {
         async function fetchData() {
@@ -64,21 +63,21 @@ export default function Profil() {
             < Header />
             < SportsNav />
 
-            {(dataApiMain.data && dataApiActivity.data && dataApiUserAverageSessions.data && dataApiUserPerformance.data) &&//short circuit operator
+            {(dataApiUserMain.data && dataApiUserActivity.data && dataApiUserAverageSessions.data && dataApiUserPerformance.data) &&//short circuit operator
                 <main>
-                    < Username name={dataApiMain.data.userInfos.firstName} />
+                    < Username name={dataApiUserMain.data.userInfos.firstName} />
                     <section className="charts">
 
                         <div className="charts__contains">
-                            < DailyActivity userActivity={dataApiActivity.data.sessions} />
+                            < DailyActivity userActivity={dataApiUserActivity.data.sessions} />
                             <div className="charts__contains__cards">
                                 < Duration userAverageSession={dataApiUserAverageSessions.data.sessions} />
                                 < ActivityType userPerformance={dataApiUserPerformance.data.data} />
-                                < Score userScore={dataApiMain.data} />
+                                < Score userScore={dataApiUserMain.data} />
                             </div>
                         </div>
 
-                        < Cards keyData={dataApiMain.data.keyData} />
+                        < Cards keyData={dataApiUserMain.data.keyData} />
 
                     </section>
                 </main>
