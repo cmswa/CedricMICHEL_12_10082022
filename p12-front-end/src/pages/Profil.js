@@ -68,8 +68,8 @@ export default function Profil() {
         <>
             < Header />
             < SportsNav />
-            
-            {(dataApiMain.data || dataApiActivity.data || dataApiUserAverageSessions.data || dataApiUserPerformance.data) && //short circuit operator
+
+            {((dataApiMain && dataApiMain.data) && (dataApiActivity && dataApiActivity.data) && (dataApiUserAverageSessions && dataApiUserAverageSessions.data) && (dataApiUserPerformance && dataApiUserPerformance.data)) ?
                 <main>
                     < Username name={dataApiMain.data.userInfos.firstName} />
                     <section className="charts">
@@ -87,7 +87,7 @@ export default function Profil() {
 
                     </section>
                 </main>
-            }
+                : 'loading'}
         </>
     )
 }
