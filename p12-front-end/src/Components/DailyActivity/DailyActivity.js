@@ -1,14 +1,31 @@
 import React from 'react'
 import './DailyActivity.css'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import PropTypes from 'prop-types';
 
+/**
+    * Make "daily activity" chart (BarChart)
+    * @param {array} userActivity user data
+    * @returns daily activity chart
+    */
 export default function DailyActivity({ userActivity }) {
 
+    /**
+     * Get the day of the full date
+     * @param {string} value full date (Year-month-day)
+     * @returns {number} day
+     */
     const renderXAxisNumber = (day) => {
         const dayNumber = day.split('-')
         return (Number(dayNumber[2])) //La méthode split() divise une chaîne de caractères en une liste ordonnée de sous-chaînes, place ces sous-chaînes dans un tableau et retourne le tableau.
     }
 
+    /**
+     * Create Tooltip
+     * @param {array} payload data
+     * @param {boolean} active is Tooltip active
+     * @returns value on hover
+     */
     //https://recharts.org/en-US/api/Tooltip
     function CustomTooltip({ payload, active }) { //payload: The source data of the content to be displayed in the tooltip, usually calculated internally. active: If set true, the tooltip is displayed. If set false, the tooltip is hidden, usually calculated internally.
         if (active) {
@@ -86,4 +103,8 @@ export default function DailyActivity({ userActivity }) {
             </ResponsiveContainer>
 
         </section>)
+}
+
+DailyActivity.propTypes = {
+    userActivity: PropTypes.array.isRequired
 }

@@ -4,7 +4,13 @@ import caloriesIcon from '../../assets/icons/calories-icon.svg';
 import proteinIcon from '../../assets/icons/protein-icon.svg';
 import carbsIcon from '../../assets/icons/carbs-icon.svg';
 import fatIcon from '../../assets/icons/fat-icon.svg';
+import PropTypes from 'prop-types';
 
+/**
+    * Create cards
+    * @param {object} keyData user data
+    * @returns data
+    */
 export default function Cards({ keyData }) {
 
     const calories = keyData.calorieCount + "kCal";
@@ -57,4 +63,8 @@ export default function Cards({ keyData }) {
 
         </aside>
     )
+}
+
+Cards.propTypes = {
+    keyData: PropTypes.object.isRequired
 }

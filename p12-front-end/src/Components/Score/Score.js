@@ -1,9 +1,20 @@
 import React from 'react'
 import './Score.css'
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis } from 'recharts';
+import PropTypes from 'prop-types';
 
+/**
+    * Make score chart (RadialBarChart)
+    * @param {array} userScore user data
+    * @returns score chart
+    */
 export default function Score({ userScore }) {
 
+    /**
+     * Format multiple score data
+     * @param {object} data data
+     * @returns only one score data
+     */
     function formatScore(data) {
         if (data.todayScore) {
             data.score = data.todayScore
@@ -14,6 +25,11 @@ export default function Score({ userScore }) {
     }
     formatScore(userScore)
 
+    /**
+     * Format the score in percentage
+     * @param {object} data data
+     * @returns integer for percentage
+     */
     function calculatePercent(data) {
         const score = Number(data.score)
 
@@ -21,6 +37,10 @@ export default function Score({ userScore }) {
     }
     const scorePercent = calculatePercent(userScore)
 
+    /**
+     * Create custom legend for Legend
+     * @returns data
+     */
     function renderLegend() {
         return <p className="score__RadialBarChart__legend">
             <span className="score__RadialBarChart__legend--percent"> {scorePercent}% </span>
@@ -57,4 +77,8 @@ export default function Score({ userScore }) {
 
         </section>
     )
+}
+
+Score.propTypes = {
+    userScore: PropTypes.object.isRequired
 }

@@ -1,6 +1,12 @@
 import React from 'react'
 import './Username.css'
+import PropTypes from 'prop-types';
 
+/**
+    * Display a user's name
+    * @param {object} name user data
+    * @returns data
+    */
 export default function Username({ name }) {
     return (
         <section className="username">
@@ -12,4 +18,8 @@ export default function Username({ name }) {
             </p>
         </section>
     )
+}
+
+Username.propTypes = {
+    name: PropTypes.string.isRequired
 }

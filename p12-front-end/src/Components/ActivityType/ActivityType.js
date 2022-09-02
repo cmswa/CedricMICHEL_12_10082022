@@ -1,9 +1,20 @@
 import React from 'react'
 import './ActivityType.css'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis } from 'recharts';
+import PropTypes from 'prop-types';
 
+/**
+    * Make "type of activity" chart (RadarChart)
+    * @param {array} userPerformance user data
+    * @returns type of activity chart
+    */
 export default function ActivityType({ userPerformance }) {
 
+    /**
+     * Format PolarAngleAxis ticks in french
+     * @param {string} kind english labels
+     * @returns french labels
+     */
     const renderActivityType = (kind) => {
         switch (kind) {
             case 1: return 'Cardio';
@@ -16,6 +27,10 @@ export default function ActivityType({ userPerformance }) {
         }
     }
 
+    /**
+     * Reverse array
+     * @returns a new array reversed
+     */
     const userPerformanceReversed = ([...userPerformance]).reverse()
 
     return (
@@ -39,3 +54,7 @@ export default function ActivityType({ userPerformance }) {
         </section>
     )
 }
+
+ActivityType.propTypes = {
+    userPerformance: PropTypes.array.isRequired
+} 

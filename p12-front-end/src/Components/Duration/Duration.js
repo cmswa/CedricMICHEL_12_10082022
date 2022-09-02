@@ -1,10 +1,20 @@
 import React from 'react'
 import './Duration.css'
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
+import PropTypes from 'prop-types';
 
-
+/**
+    * Make "average duration of session" chart (LineChart)
+    * @param {array} userAverageSession user data
+    * @returns average duration of session chart
+    */
 export default function Duration({ userAverageSession }) {
 
+    /**
+     * Format XAxis ticks
+     * @param {Number} day day of the week
+     * @returns letter of the day
+     */
     const renderXAxisLetter = (day) => {
         switch (day) {
             case 1: return 'L';
@@ -18,6 +28,12 @@ export default function Duration({ userAverageSession }) {
         }
     }
 
+    /**
+     * Create Tooltip
+     * @param {array} payload data 
+     * @param {boolean} active is Tooltip active
+     * @returns value on hover (when the line is pointed)
+     */
     function tooltipSessionDurationChart({ payload, active }) {
         if (active) {
             return (
@@ -29,6 +45,11 @@ export default function Duration({ userAverageSession }) {
         return null
     }
 
+    /**
+     * Create custom cursor for Tooltip
+     * @param {object} props data (positioning) 
+     * @returns transparent rectangle on hover
+     */
     const CustomCursor = (props) => {
         const { points, width } = props;
         const { x, y } = points[0];
@@ -36,7 +57,7 @@ export default function Duration({ userAverageSession }) {
             <Rectangle
                 fill="#000"
                 opacity={0.1}
-                x={x }
+                x={x}
                 y={y - 80}
                 // width={80}
                 width={width + 30}
@@ -84,4 +105,8 @@ export default function Duration({ userAverageSession }) {
             </ResponsiveContainer>
 
         </section>)
+}
+
+Duration.propTypes = {
+    userAverageSession: PropTypes.array.isRequired
 }

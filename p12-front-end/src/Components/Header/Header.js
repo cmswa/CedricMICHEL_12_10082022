@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from '../../assets/icons/logoSportSee.svg'
 import './Header.css'
 
-
+/**
+ * Create horizontal navigation bar
+ */
 export default function Header() {
     return (
         <header className='header'>
