@@ -6,9 +6,7 @@ import cyclingLogo from '../../assets/icons/cycling.svg'
 import fitnessLogo from '../../assets/icons/fitness.svg'
 import './SportsNav.css'
 
-/**
- * Create vertical navigation bar
- */
+/** Create vertical navigation bar */
 export default function Sports() {
     return (
         <section className="sports">

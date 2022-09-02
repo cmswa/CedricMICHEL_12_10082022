@@ -12,9 +12,7 @@ import './Profil.css'
 import { useParams, useNavigate } from "react-router-dom";
 import fetchData from '../service/initialFetch';
 
-/**
- * Create profile page
- */
+/** Create profile page */
 export default function Profil() {
 
     const [dataApiUserMain, setDataApiUserMain] = useState({});
