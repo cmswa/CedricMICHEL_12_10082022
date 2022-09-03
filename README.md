@@ -40,7 +40,7 @@ Install the dependencies:
 
 `npm install` or `yarn`
 
-Launch back-end API:
+Launch front-end API:
 
 `npm start` or `yarn start`
 
