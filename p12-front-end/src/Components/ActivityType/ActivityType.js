@@ -41,7 +41,7 @@ export default function ActivityType({ userPerformance }) {
                     <PolarGrid radialLines={false} />
                     <PolarAngleAxis
                         dataKey='kind'
-                        tick={{ fontSize: 12, fontWeight: 500 }}
+                        tick={{ fontSize: 10, fontWeight: 500 }}
                         stroke='#FFF'
                         tickLine={false}
                         tickFormatter={renderActivityType} />

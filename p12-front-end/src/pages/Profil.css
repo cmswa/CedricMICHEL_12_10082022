@@ -32,3 +32,13 @@ main {
 .chartsCard {
     width: 30.5%;
 }
+
+@media all and (max-width: 1150px) {
+    .charts__contains__cards {
+        height: 180px;
+        margin-top: 3em;
+    }
+    .charts__contains {
+        justify-content: flex-start;
+    }
+}

@@ -79,3 +79,9 @@
     line-height: 24px;
     color: #74798c;
 }
+
+@media all and (max-width: 1150px) {
+    .cards {
+        height: 92%;
+    }
+}
