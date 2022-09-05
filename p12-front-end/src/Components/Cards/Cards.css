@@ -1,20 +1,16 @@
 .cards {
     display: flex;
     flex-direction: column;
-    /* width: 32%; */
     width: 26%;
     height: 100%;
     justify-content: space-between;
 }
 
 .card {
-    /* height: 124px;
-    width: 258px; */
     border-radius: 5px;
     background: #fbfbfb;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
     border-radius: 5px;
-    /* margin: auto; */
     display: flex;
     align-items: center;
     width: 100%;
@@ -32,9 +28,7 @@
 }
 
 .card__calories--icon {
-    /* background: #ff0000; */
     background: rgb(255, 0, 0, 0.07);
-    /* opacity: 0.07; */
 }
 
 .card__proteins--icon {

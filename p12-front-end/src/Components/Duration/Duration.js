@@ -59,7 +59,6 @@ export default function Duration({ userAverageSession }) {
                 opacity={0.1}
                 x={x}
                 y={y - 80}
-                // width={80}
                 width={width + 30}
                 height={260}
             />
@@ -69,7 +68,6 @@ export default function Duration({ userAverageSession }) {
     return (
         <section className="duration chartsCard">
             <h4 className="duration__title">Durée moyenne des sessions</h4>
-            {/* <div className="lineChart"> </div> */}
 
             <ResponsiveContainer className='duration__BarChart' width="100%" height="100%">
                 <LineChart
@@ -85,7 +83,6 @@ export default function Duration({ userAverageSession }) {
                         tickMargin={40}
                         tickFormatter={renderXAxisLetter} />
 
-                    {/* <Tooltip cursor={false} wrapperStyle={{ outline: 'none' }} content={tooltipSessionDurationChart}  */}
                     <Tooltip cursor={<CustomCursor />}
                         wrapperStyle={{ outline: 'none' }}
                         content={tooltipSessionDurationChart} />

@@ -23,43 +23,6 @@ export default function Profil() {
     let { id } = useParams();
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch(`http://localhost:3000/user/${id}`)
-    //         const data = await response.json();
-    //         setDataApiUserMain(data)
-    //     }
-    //     fetchData();
-    // }, [id])
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch(`http://localhost:3000/user/${id}/activity`)
-    //         const data = await response.json();
-    //         setdataApiUserActivity(data)
-    //     }
-    //     fetchData();
-    // }, [id])
-    // // console.log(dataApiUserActivity.data);
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch(`http://localhost:3000/user/${id}/average-sessions`)
-    //         const data = await response.json();
-    //         setDataApiUserAverageSessions(data);
-    //     }
-    //     fetchData();
-    // }, [id])
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch(`http://localhost:3000/user/${id}/performance`)
-    //         const data = await response.json();
-    //         setDataApiUserPerformance(data);
-    //     }
-    //     fetchData();
-    // }, [id])
-
     useEffect(() => {
         fetchData(id)
             .then(data => {

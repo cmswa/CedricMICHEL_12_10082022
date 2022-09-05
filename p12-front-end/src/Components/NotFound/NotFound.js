@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import './NotFound.css'
 
+/** Create 404 page*/
 export default function NotFound() {
     return (
         <section className='notFound'>

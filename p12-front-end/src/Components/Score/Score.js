@@ -55,10 +55,7 @@ export default function Score({ userScore }) {
 
             <ResponsiveContainer className='score__RadialBarChart' width="100%" height="100%">
                 <RadialBarChart
-                    // width={730}
-                    // height={250}
                     innerRadius="70%"
-                    // outerRadius="80%"
                     data={[userScore]}
                     startAngle={80}
                     endAngle={440}

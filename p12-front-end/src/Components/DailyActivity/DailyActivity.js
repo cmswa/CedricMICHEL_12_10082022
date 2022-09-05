@@ -66,12 +66,10 @@ export default function DailyActivity({ userActivity }) {
                         tickSize='0' //enlève le "tiret" (The length of tick line.)
                         tickMargin='25' //The margin between tick line and tick.
                         stroke='#9B9EAC'
-                    // padding={{ left: -50, right: -50 }} 
                     />
                     <YAxis
                         dataKey='calories'
                         yAxisId='right'
-                        // orientation='left'
                         hide='true' />
                     <YAxis className='dailyActivityYAxis'
                         dataKey='kilogram'
