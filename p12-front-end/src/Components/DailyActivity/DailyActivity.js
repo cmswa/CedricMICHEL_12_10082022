@@ -6,19 +6,10 @@ import PropTypes from 'prop-types';
 /**
     * Make "daily activity" chart (BarChart)
     * @param {array} userActivity user data
+    * @param {number} day
     * @returns daily activity chart
     */
 export default function DailyActivity({ userActivity }) {
-
-    /**
-     * Get the day of the full date
-     * @param {string} value full date (Year-month-day)
-     * @returns {number} day
-     */
-    const renderXAxisNumber = (day) => {
-        const dayNumber = day.split('-')
-        return (Number(dayNumber[2])) //La méthode split() divise une chaîne de caractères en une liste ordonnée de sous-chaînes, place ces sous-chaînes dans un tableau et retourne le tableau.
-    }
 
     /**
      * Create Tooltip
@@ -61,7 +52,7 @@ export default function DailyActivity({ userActivity }) {
                     <CartesianGrid vertical='false' strokeDasharray='2 2' height={1} horizontalPoints={[30, 125]} />
                     <XAxis className='dailyActivityXAxis'
                         dataKey='day'
-                        tickFormatter={renderXAxisNumber} //The formatter function of tick(Set the values of axis ticks)
+                        // tickFormatter={renderXAxisNumber} //The formatter function of tick(Set the values of axis ticks)
                         interval='preserveStartEnd'
                         tickSize='0' //enlève le "tiret" (The length of tick line.)
                         tickMargin='25' //The margin between tick line and tick.

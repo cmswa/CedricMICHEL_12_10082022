@@ -11,21 +11,6 @@ import PropTypes from 'prop-types';
 export default function Score({ userScore }) {
 
     /**
-     * Format multiple score data
-     * @param {object} data data
-     * @returns only one score data
-     */
-    function formatScore(data) {
-        if (data.todayScore) {
-            data.score = data.todayScore
-            delete data.todayScore
-
-            return data
-        }
-    }
-    formatScore(userScore)
-
-    /**
      * Format the score in percentage
      * @param {object} data data
      * @returns integer for percentage

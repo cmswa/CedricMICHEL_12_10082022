@@ -11,6 +11,8 @@ import './Profil.css'
 // import data from '../mock/data.js'
 import { useParams, useNavigate } from "react-router-dom";
 import fetchData from '../service/initialFetch';
+import fetchDataMock from '../service/iniatialFetchMock';
+import { userDataModel, userDataActivityModel, userDataAverangeSessionsModel, userDataPerformanceModel } from '../service/UserDataModel';
 
 /** Create profile page */
 export default function Profil() {
@@ -26,19 +28,30 @@ export default function Profil() {
     useEffect(() => {
         fetchData(id)
             .then(data => {
-
-                setDataApiUserMain(data)
+                const formattedUserData = new userDataModel(data.data);
+                setDataApiUserMain(formattedUserData);
+                // console.log(formattedUserData);
+                // console.log(data);
 
                 fetchData(id, "activity")
-                    .then(data => setdataApiUserActivity(data))
+                    .then(data => {
+                        const formattedUserDataActivity = new userDataActivityModel(data.data);
+                        setdataApiUserActivity(formattedUserDataActivity)
+                    })
                     .catch(err => console.log("Erreur lors de la récupération des données activity", err))
 
                 fetchData(id, "average-sessions")
-                    .then(data => setDataApiUserAverageSessions(data))
+                    .then(data => {
+                        const formattedUserDataAverageSessions = new userDataAverangeSessionsModel(data.data);
+                        setDataApiUserAverageSessions(formattedUserDataAverageSessions)
+                    })
                     .catch(err => console.log("Erreur lors de la récupération des données average-sessions", err))
 
                 fetchData(id, "performance")
-                    .then(data => setDataApiUserPerformance(data))
+                    .then(data => {
+                        const formattedUserDataPerformance = new userDataPerformanceModel(data.data);
+                        setDataApiUserPerformance(formattedUserDataPerformance)
+                    })
                     .catch(err => console.log("Erreur lors de la récupération des données performance", err))
 
             })
@@ -50,21 +63,21 @@ export default function Profil() {
             < Header />
             < SportsNav />
 
-            {(dataApiUserMain.data && dataApiUserActivity.data && dataApiUserAverageSessions.data && dataApiUserPerformance.data) &&//short circuit operator
+            {(dataApiUserMain.data || dataApiUserActivity.data || dataApiUserAverageSessions.data || dataApiUserPerformance.data) &&//short circuit operator
                 <main>
-                    < Username name={dataApiUserMain.data.userInfos.firstName} />
+                    < Username name={dataApiUserMain.userInfos.firstName} />
                     <section className="charts">
 
                         <div className="charts__contains">
-                            < DailyActivity userActivity={dataApiUserActivity.data.sessions} />
+                            < DailyActivity userActivity={dataApiUserActivity.sessions} />
                             <div className="charts__contains__cards">
-                                < Duration userAverageSession={dataApiUserAverageSessions.data.sessions} />
-                                < ActivityType userPerformance={dataApiUserPerformance.data.data} />
-                                < Score userScore={dataApiUserMain.data} />
+                                < Duration userAverageSession={dataApiUserAverageSessions.sessions} />
+                                < ActivityType userPerformance={dataApiUserPerformance.data} />
+                                < Score userScore={dataApiUserMain} />
                             </div>
                         </div>
 
-                        < Cards keyData={dataApiUserMain.data.keyData} />
+                        < Cards keyData={dataApiUserMain.keyData} />
 
                     </section>
                 </main>
